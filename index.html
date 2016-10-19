@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Parisienne|Roboto:300" rel="stylesheet">
+<title>Wedding Quiz</title>
+<style>
+body {
+background-color: #B17B6A;
+font-family:'Roboto', sans-serif;
+
+}
+
+h1 {
+font-family:'Parisienne', cursive;
+font-size: 50px;
+text-align: center;
+}
+
+h2 {
+font-family:'Parisienne', cursive;
+font-size: 40px;
+
+}
+
+h4{
+font-family:'Parisienne', cursive;
+font-size: 25px;
+}
+
+.pspecial {
+font-family:'Parisienne', cursive;
+font-size: 30px;
+}
+
+#header {
+width: 80%;
+max-width: 1000px;
+margin: auto;
+padding: 5px;
+background-color: white;
+border-radius: 10px;
+}
+
+#main {
+width: 80%;
+max-width: 1000px;
+margin: auto;
+padding: 5px;
+background-color: white;
+border-radius: 10px;
+}
+
+</style>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Marriage Rate', 'Divorce Rate'],
+          ['2000', 8.2, 4.0],
+          ['2005', 7.6, 3.6],
+          ['2010', 6.8, 3.6],
+          ['2014', 6.9, 3.2]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'United States Marriage & Divorce Rates',
+            subtitle: 'Rates per 1,000 total population: 2000-2014',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+
+<body>
+<div id="main">
+<div id="header">
+<img src="mrmrs.jpg" width="100%" />
+<h1>Wedding 101</h1>
+</div>
+
+<table style="100%">
+<tr>
+<td>
+<form id="form1" action=" ">
+<h4>Traditionally, why does the groom carry his bride across the threshold?</h4>
+<input type="radio" name="spirits" value="0" />She is so tired, and can't walk anymore<br />
+<input type="radio" name="spirits" value="1" />He is protecting her from evil spirits.<br />
+<input type="radio" name="spirits" value="0" />He is showing a sign of chivalry.
+
+
+<h4>Who traditionally hosts the rehearsal dinner?</h4>
+<input type="radio" name="groom" value="1" />The Groom's family<br />
+<input type="radio" name="groom" value="0" />The Bride's grandparents<br />
+<input type="radio" name="groom" value="0" />The Bride and Groom 
+
+<h4>If the reception is dragging, when is the best time to leave?</h4>
+<input type="radio" name="cake" value="0" />Whenever you want to.<br />
+<input type="radio" name="cake" value="0" />It is best you don't leave.<br />
+<input type="radio" name="cake" value="1" />After the cake is cut.
+
+<h4>What color should guests never wear to a wedding?</h4>
+<input type="radio" name="white" value="1" />White.<br />
+<input type="radio" name="white" value="0" />Black.<br />
+<input type="radio" name="white" value="0" />Red.
+
+<h4>How soon should guests RSVP?</h4>
+<input type="radio" name="asap" value="0" />The week before the wedding.<br />
+<input type="radio" name="asap" value="1" />ASAP<br />
+<input type="radio" name="asap" value="0" />A month before the wedding.
+
+<h4>How long do guests have to give the newlyweds gifts?</h4>
+<input type="radio" name="year" value="0" />Only on the week of the wedding.<br />
+<input type="radio" name="year" value="1" />A year after they're wedding.<br />
+<input type="radio" name="year" value="0" />You can always give them gifts.
+
+<h4>Which side does the groom's guests sit on?</h4>
+<input type="radio" name="right" value="0" />Left.<br />
+<input type="radio" name="right" value="0" />Mixed all over.<br />
+<input type="radio" name="right" value="1" />Right.
+<br />
+
+<input type="submit" value="Submit">
+</form>
+
+<p class="pspecial"><span id="answer">__</span></p>
+<p class="pspecial" id="answer2"></p>
+
+</td>
+
+<td>
+
+<h2>A few facts about marriage</h2>
+
+<div id="columnchart_material" style="width: 100%; height: 100%;"></div>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+<script>
+document.getElementById("form1").onsubmit=function() {
+ 	spirits = parseInt(document.querySelector('input[name = "spirits"]:checked').value);
+	groom = parseInt(document.querySelector('input[name = "groom"]:checked').value);
+	cake = parseInt(document.querySelector('input[name = "cake"]:checked').value);
+	white = parseInt(document.querySelector('input[name = "white"]:checked').value);
+	asap = parseInt(document.querySelector('input[name = "asap"]:checked').value);
+	year = parseInt(document.querySelector('input[name = "year"]:checked').value);
+	right = parseInt(document.querySelector('input[name = "right"]:checked').value);
+	
+	total = spirits + groom + cake + white + asap + year + right;
+	
+	document.getElementById("answer").innerHTML=total;
+
+	if(total < 3) {
+	document.getElementById("answer2").innerHTML="Have you ever been to a wedding?<br /> <img src='0.gif' width='40%'/>";
+	}
+	if(total >= 3 && total < 5) {
+	document.getElementById("answer2").innerHTML="Knowing everything about weddings is hard, see what you missed. <br /> <img src='3.jpg' width='40%'/>";
+	}
+	if(total >= 7) {
+	document.getElementById("answer2").innerHTML="You are a wedding expert!<br /><img src='7.jpg' width='40%'/>";
+	}
+return false;
+
+}
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
